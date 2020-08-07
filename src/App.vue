@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <modal :width=175 :height=195 :adaptive="true" name="settings">
+    <modal :width=175 :height=215 :adaptive="true" name="settings">
       <div class="modalcontent">
         <ul class="nobull">
           <li>
@@ -27,6 +27,10 @@
             <input type="checkbox" id="bitcointalk" v-model="bitcointalk">
             <label for="bitcointalk">BitCoinTalk</label>
           </li>
+          <li>
+            <input type="checkbox" id="medium" v-model="medium">
+            <label for="medium">Medium</label>
+          </li>
         </ul>
       </div>
     </modal>
@@ -39,6 +43,7 @@
         <tr :key="item.id" class="twitter" v-if="item.type == 'twitter' && twitter == true"><th><span v-html="decode(item.content)"></span></th></tr>
         <tr :key="item.id" style="cursor:pointer;" @click="youtubelink(item.vidid)" v-if="item.type == 'youtube' && youtube == true"><th><img class="thumb" v-if="item.thumb" :src="item.thumb"><h2 v-html="item.title"></h2></th></tr>
         <tr :key="item.id" style="cursor:pointer;" @click="bitcointalklink(item.topicid)" v-if="item.type == 'bitcointalk' && bitcointalk == true"><th><h3 v-html="item.title"></h3><h4>BitCoinTalk - {{ item.board }}</h4></th></tr>
+        <tr :key="item.id" style="cursor:pointer;" @click="mediumlink(item.medlink)" v-if="item.type == 'medium' && medium == true"><th><img class="thumb" v-if="item.thumb" :src="'https://cdn-images-1.medium.com/fit/t/150/150/' + item.thumb"><h3 v-html="item.title"></h3><h4 v-html="item.subtitle"></h4></th></tr>
       </template>
     </table>
   </div>
@@ -56,7 +61,8 @@ export default {
       reddit: true,
       twitter: true,
       youtube: true,
-      bitcointalk: true
+      bitcointalk: true,
+      medium: true
     }
   },
   methods: {
@@ -80,6 +86,9 @@ export default {
     },
     bitcointalklink(topicid) {
       window.open('https://bitcointalk.org/index.php?topic=' + topicid)
+    },
+    mediumlink(articleid) {
+      window.open('https://medium.com/post/' + articleid)
     },
     decode(base64) {
       // eslint-disable-next-line
