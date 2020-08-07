@@ -110,6 +110,12 @@ html, body {
 .bitmex {
   text-align: left;
 }
+code {
+  width: 100px;
+}
+pre {
+  width: 100px;
+}
 .twitter {
   text-align: left;
 }
