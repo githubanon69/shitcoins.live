@@ -82,7 +82,8 @@ export default {
       window.open('https://bitcointalk.org/index.php?topic=' + topicid)
     },
     decode(base64) {
-      return atob(base64)
+      // eslint-disable-next-line
+      return atob(base64).replace(/[\x00-\x08\x0E-\x1F\x7F-\uFFFF]/g, '')
     },
     showsettings () {
       this.$modal.show('settings')
