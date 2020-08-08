@@ -40,7 +40,7 @@
         <tr :key="item.id" style="cursor:pointer;" @click="chanlink(item.no)" v-if="item.type == '4chan' && chan == true"><th><img class="thumb" v-if="item.thumb" :src="'https://shitcoins.sfo2.digitaloceanspaces.com/chanimages/' + item.thumb + 's.jpg'"><h2 v-html="item.title"></h2><span v-html="item.message"></span></th></tr>
         <tr :key="item.id" class="bitmex" v-if="item.type == 'bitmex' && bitmex == true"><th>{{ item.user }}: <span v-html="item.message"></span></th></tr>
         <tr :key="item.id" style="cursor:pointer;" @click="redditlink(item.link)" v-if="item.type == 'reddit' && reddit == true"><th><img class="thumb" v-if="item.thumb" :src="item.thumb"><h3 v-html="item.title"></h3><h4>Plebbit/{{ item.sub }}</h4></th></tr>
-        <tr :key="item.id" class="twitter" v-if="item.type == 'twitter' && twitter == true"><th><span v-html="decode(item.content)"></span></th></tr>
+        <tr :key="item.id" class="twitter" style="cursor:pointer;" @click="twitterlink(item.link)" v-if="item.type == 'twitter' && twitter == true"><th><span v-html="decode(item.content)"></span></th></tr>
         <tr :key="item.id" style="cursor:pointer;" @click="youtubelink(item.vidid)" v-if="item.type == 'youtube' && youtube == true"><th><img class="thumb" v-if="item.thumb" :src="item.thumb"><h2 v-html="item.title"></h2></th></tr>
         <tr :key="item.id" style="cursor:pointer;" @click="bitcointalklink(item.topicid)" v-if="item.type == 'bitcointalk' && bitcointalk == true"><th><h3 v-html="item.title"></h3><h4>BitCoinTalk - {{ item.board }}</h4></th></tr>
         <tr :key="item.id" style="cursor:pointer;" @click="mediumlink(item.medlink)" v-if="item.type == 'medium' && medium == true"><th><img class="thumb" v-if="item.thumb" :src="'https://cdn-images-1.medium.com/fit/t/150/150/' + item.thumb"><h3 v-html="item.title"></h3><h4 v-html="item.subtitle"></h4></th></tr>
@@ -89,6 +89,9 @@ export default {
     },
     mediumlink(articleid) {
       window.open('https://medium.com/post/' + articleid)
+    },
+    twitterlink(tstatus) {
+      window.open('https://twitter.com' + tstatus)
     },
     decode(base64) {
       // eslint-disable-next-line
