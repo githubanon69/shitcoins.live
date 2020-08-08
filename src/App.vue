@@ -37,13 +37,13 @@
     <div class="settings" @click="showsettings()">&#9881;</div>
     <table class="feed" cellspacing="8px">
       <template v-for="item in feed">
-        <tr :key="item.id" style="cursor:pointer;" @click="chanlink(item.no)" v-if="item.type == '4chan' && chan == true"><th><img class="thumb" v-if="item.thumb" :src="'https://shitcoins.sfo2.digitaloceanspaces.com/chanimages/' + item.thumb + 's.jpg'"><h2 v-html="item.title"></h2><span v-html="item.message"></span></th></tr>
+        <tr :key="item.id" class="link" style="cursor:pointer;" @click="chanlink(item.no)" v-if="item.type == '4chan' && chan == true"><th><img class="thumb" v-if="item.thumb" :src="'https://shitcoins.sfo2.digitaloceanspaces.com/chanimages/' + item.thumb + 's.jpg'"><h2 v-html="item.title"></h2><span v-html="item.message"></span></th></tr>
         <tr :key="item.id" class="bitmex" v-if="item.type == 'bitmex' && bitmex == true"><th>{{ item.user }}: <span v-html="item.message"></span></th></tr>
-        <tr :key="item.id" style="cursor:pointer;" @click="redditlink(item.link)" v-if="item.type == 'reddit' && reddit == true"><th><img class="thumb" v-if="item.thumb" :src="item.thumb"><h3 v-html="item.title"></h3><h4>Plebbit/{{ item.sub }}</h4></th></tr>
-        <tr :key="item.id" class="twitter" style="cursor:pointer;" @click="twitterlink(item.link)" v-if="item.type == 'twitter' && twitter == true"><th><span v-html="decode(item.content)"></span></th></tr>
-        <tr :key="item.id" style="cursor:pointer;" @click="youtubelink(item.vidid)" v-if="item.type == 'youtube' && youtube == true"><th><img class="thumb" v-if="item.thumb" :src="item.thumb"><h2 v-html="item.title"></h2></th></tr>
-        <tr :key="item.id" style="cursor:pointer;" @click="bitcointalklink(item.topicid)" v-if="item.type == 'bitcointalk' && bitcointalk == true"><th><h3 v-html="item.title"></h3><h4>BitCoinTalk - {{ item.board }}</h4></th></tr>
-        <tr :key="item.id" style="cursor:pointer;" @click="mediumlink(item.medlink)" v-if="item.type == 'medium' && medium == true"><th><img class="thumb" v-if="item.thumb" :src="'https://cdn-images-1.medium.com/fit/t/150/150/' + item.thumb"><h3 v-html="item.title"></h3><h4 v-html="item.subtitle"></h4></th></tr>
+        <tr :key="item.id" class="link" style="cursor:pointer;" @click="redditlink(item.link)" v-if="item.type == 'reddit' && reddit == true"><th><img class="thumb" v-if="item.thumb" :src="item.thumb"><h3 v-html="item.title"></h3><h4>Plebbit/{{ item.sub }}</h4></th></tr>
+        <tr :key="item.id" class="twitter link" style="cursor:pointer;" @click="twitterlink(item.link)" v-if="item.type == 'twitter' && twitter == true"><th><span v-html="decode(item.content)"></span></th></tr>
+        <tr :key="item.id" class="link" style="cursor:pointer;" @click="youtubelink(item.vidid)" v-if="item.type == 'youtube' && youtube == true"><th><img class="thumb" v-if="item.thumb" :src="item.thumb"><h2 v-html="item.title"></h2></th></tr>
+        <tr :key="item.id" class="link" style="cursor:pointer;" @click="bitcointalklink(item.topicid)" v-if="item.type == 'bitcointalk' && bitcointalk == true"><th><h3 v-html="item.title"></h3><h4>BitCoinTalk - {{ item.board }}</h4></th></tr>
+        <tr :key="item.id" class="link" style="cursor:pointer;" @click="mediumlink(item.medlink)" v-if="item.type == 'medium' && medium == true"><th><img class="thumb" v-if="item.thumb" :src="'https://cdn-images-1.medium.com/fit/t/150/150/' + item.thumb"><h3 v-html="item.title"></h3><h4 v-html="item.subtitle"></h4></th></tr>
       </template>
     </table>
   </div>
@@ -121,7 +121,6 @@ html, body {
 }
 .bitmex {
   text-align: left;
-  pointer-events: none;
 }
 code {
   width: 100px;
@@ -133,21 +132,21 @@ pre {
   text-align: left;
 }
 th {
-  transition: all .2s ease-in-out;
+  transition: all .01s ease-in-out;
   width:100%;
   padding: 6px;
   float: left;
   background: #C9D6FF;
   -moz-box-shadow: 0 0 2px 2px #666;
   -webkit-box-shadow: 0 0 2px 2px #666;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1), 
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1),
     0 2px 2px rgba(0,0,0,0.1), 
     0 4px 4px rgba(0,0,0,0.1), 
     0 8px 8px rgba(0,0,0,0.1),
     0 16px 16px rgba(0,0,0,0.1);
 }
-tr:hover th {
-  transform: scale(1.007);
+.link:hover th {
+  transform: scale(1.004);
 }
 .feed {
   overflow: hidden;
