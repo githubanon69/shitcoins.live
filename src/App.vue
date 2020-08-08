@@ -121,6 +121,7 @@ html, body {
 }
 .bitmex {
   text-align: left;
+  pointer-events: none;
 }
 code {
   width: 100px;
@@ -132,6 +133,7 @@ pre {
   text-align: left;
 }
 th {
+  transition: all .2s ease-in-out;
   width:100%;
   padding: 6px;
   float: left;
@@ -143,6 +145,9 @@ th {
     0 4px 4px rgba(0,0,0,0.1), 
     0 8px 8px rgba(0,0,0,0.1),
     0 16px 16px rgba(0,0,0,0.1);
+}
+tr:hover th {
+  transform: scale(1.007);
 }
 .feed {
   overflow: hidden;
